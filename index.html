@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد أحمد إسماعيل | Portfolio & CV</title>
+    <!-- خط تجوال وأيقونات FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           نظام التصميم المدمج (يعمل بدون أي مكتبات خارجية)
+           ========================================== */
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: rgba(18, 24, 38, 0.75);
+            --gold-light: #fde047;
+            --gold-primary: #f59e0b;
+            --gold-dark: #b45309;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-gold: rgba(245, 158, 11, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            /* إطار فخم يحيط بالصفحة */
+            border: 10px solid #020305;
+            min-height: 100vh;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.12) 0%, transparent 35%),
+                radial-gradient(circle at 85% 80%, rgba(217, 119, 6, 0.1) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* إطار ذهبي داخلي رفيع حول الشاشة */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 10px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 50px 24px 120px;
+        }
+
+        /* ==========================================
+           1. القسم الترحيبي والصورة الشخصية (Hero)
+           ========================================== */
+        .hero-card {
+            background: linear-gradient(145deg, rgba(24, 32, 50, 0.85), rgba(11, 15, 25, 0.9));
+            border: 1px solid var(--border-gold);
+            border-radius: 28px;
+            padding: 45px 35px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 158, 11, 0.08);
+            backdrop-filter: blur(16px);
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 15%;
+            right: 15%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold-primary), transparent);
+        }
+
+        /* تحجيم صارم ومضمون 100% للصورة الشخصية */
+        .avatar-wrapper {
+            width: 165px !important;
+            height: 165px !important;
+            margin: 0 auto 24px !important;
+            position: relative;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.45);
+            animation: floatAvatar 4s ease-in-out infinite;
+        }
+
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-7px); }
+        }
+
+        .avatar-wrapper img {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 155px !important;
+            max-height: 155px !important;
+            object-fit: cover !important;
+            object-position: center top !important;
+            border-radius: 50% !important;
+            border: 4px solid var(--bg-dark) !important;
+            display: block !important;
+            background-color: #1e293b;
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .role-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: var(--gold-light);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            background: linear-gradient(to left, #ffffff, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bio {
+            max-width: 780px;
+            margin: 18px auto 28px;
+            font-size: 1.12rem;
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px 26px;
+            border-radius: 16px;
+            border-right: 4px solid var(--gold-primary);
+        }
+
+        /* شريط المعلومات الشخصية السريع */
+        .info-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .info-pill {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .info-pill i {
+            color: var(--gold-primary);
+        }
+
+        .info-pill:hover {
+            border-color: var(--gold-primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* عدادات الإنجاز السريعة */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 28px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(245, 158, 11, 0.12);
+        }
+
+        .stat-num {
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            line-height: 1.2;
+        }
+
+        .stat-title {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           عناوين الأقسام
+           ========================================== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .section-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(180, 83, 9, 0.1));
+            border: 1px solid var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-light);
+            font-size: 1.25rem;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        section {
+            margin-bottom: 55px;
+        }
+
+        /* ==========================================
+           2. الخط الزمني للخبرات (Timeline)
+           ========================================== */
+        .timeline {
+            position: relative;
+            padding-right: 32px;
+            border-right: 3px solid rgba(245, 158, 11, 0.3);
+            margin-right: 18px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: -43px;
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            border: 4px solid var(--bg-dark);
+            box-shadow: 0 0 15px var(--gold-primary);
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 28px;
+            backdrop-filter: blur(12px);
+            transition: all 0.35s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.15);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .job-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .job-company {
+            color: var(--gold-primary);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+
+        .job-date {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #000;
+            font-weight: 800;
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+
+        .custom-list {
+            list-style: none;
+        }
+
+        .custom-list li {
+            position: relative;
+            padding-right: 24px;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+            font-size: 0.98rem;
+        }
+
+        .custom-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            top: 2px;
+            color: var(--gold-primary);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================
+           3. المهارات وأشرطة التقدم (Progress Bars)
+           ========================================== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-group-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-box {
+            margin-bottom: 18px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .skill-percent {
+            color: var(--gold-light);
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light));
+            border-radius: 50px;
+            transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 12px var(--gold-primary);
+        }
+
+        /* ==========================================
+           4. البطاقات التفاعلية والشهادات
+           ========================================== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .cert-badge {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .cert-year {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+            background: rgba(245, 158, 11, 0.12);
+            padding: 2px 10px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+        }
+
+        .cert-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .cert-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           5. الشريط العائم السفلي (Floating Action Bar)
+           ========================================== */
+        .floating-dock {
+            position: fixed;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(10, 14, 23, 0.92);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            padding: 10px 22px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 25px rgba(245, 158, 11, 0.2);
+        }
+
+        .dock-btn {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .dock-call {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #000;
+        }
+
+        .dock-wa {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+
+        .dock-in {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #60a5fa;
+        }
+
+        .dock-btn:hover {
+            transform: scale(1.06);
+        }
+
+        /* استجابة الشاشات الصغيرة (الموبايل) */
+        @media (max-width: 640px) {
+            .hero-name { font-size: 1.85rem; }
+            .hero-card { padding: 30px 18px; }
+            .floating-dock { width: 92%; justify-content: space-around; padding: 10px; }
+            .dock-btn span { display: none; }
+            .dock-btn { padding: 12px 20px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 1. بطاقة الهوية الترحيبية (Hero Section) -->
+        <header class="hero-card">
+            <div class="avatar-wrapper">
+                <img src="https://xatimg.com/image/QsmEpGyYPTFE.png" alt="محمد أحمد إسماعيل">
+                <div class="verified-badge" title="Reserve Barista معتمد">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+
+            <div class="role-pill">
+                <i class="fas fa-crown"></i>
+                <span>Certified Reserve Barista & Quality Monitor</span>
+            </div>
+
+            <h1 class="hero-name">محمد أحمد إسماعيل عبد الحميد</h1>
+
+            <p class="hero-bio">
+                "صانع قهوة مُعتمد (Reserve Barista) ومراقب جودة بخبرة تمتد لـ 9 سنوات في قيادة التميز التشغيلي لدى كبرى العلامات العالمية مثل <strong>Starbucks</strong> و <strong>Cilantro</strong>. أدمج بين شغف الابتكار في تحضير المشروبات والصرامة في تطبيق أعلى معايير الجودة، للارتقاء بتجربة العميل وتحويل الكوب اليومي إلى عمل فني استثنائي."
+            </p>
+
+            <!-- التفاصيل الشخصية المستخرجة من السيرة الذاتية -->
+            <div class="info-pills">
+                <div class="info-pill"><i class="fas fa-map-marker-alt"></i> 33 ش أبو بريك، عرب المعادي، القاهرة</div>
+                <div class="info-pill"><i class="fas fa-phone-alt"></i> 0112182143</div>
+                <div class="info-pill"><i class="fas fa-envelope"></i> Mohammedismaeel@hotmail.com</div>
+                <div class="info-pill"><i class="fas fa-calendar-alt"></i> 27 فبراير 1995</div>
+                <div class="info-pill"><i class="fas fa-user-check"></i> مصري | متزوج</div>
+            </div>
+
+            <!-- شريط الأرقام والإنجازات -->
+            <div class="stats-bar">
+                <div class="stat-box">
+                    <div class="stat-num">+9</div>
+                    <div class="stat-title">سنوات خبرة ميدانية</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">2023</div>
+                    <div class="stat-title">لقب بطل الباريستا</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">+6</div>
+                    <div class="stat-title">اعتمادات دولية وشهادات</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-title">معايير الجودة والسلامة</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. المسار المهني (Vertical Timeline) -->
+        <section>
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-briefcase"></i></div>
+                <h2 class="section-title">الخبرات العملية والإنجازات</h2>
+            </div>
+
+            <div class="timeline">
+                <!-- ستاربكس -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">مراقب جودة وباريستا معتمد (Certified Barista - Quality Monitor)</div>
+                                <div class="job-company"><i class="fas fa-mug-hot"></i> ستاربكس كافيه (Starbucks Cafe) - القاهرة</div>
+                            </div>
+                            <span class="job-date">2020 - 2025</span>
+                        </div>
+                        <ul class="custom-list">
+                            <li>قيادة عمليات مراقبة وتقييم جودة القهوة والمشروبات وفق معايير ستاربكس العالمية لضمان أعلى معدلات رضا العملاء.</li>
+                            <li>ابتكار وتطوير أساليب وتطبيقات تحضير جديدة للمشروبات داخل المقهى لإثراء تجربة الزوار وزيادة المبيعات.</li>
+                            <li>إدارة وتنظيم عمليات تقديم المشروبات بفعالية عالية خلال ساعات الذروة لرفع الكفاءة التشغيلية والسرعة.</li>
+                            <li>تنفيذ وإدارة عمليات التفتيش الدورية لضمان الامتثال الكامل لمعايير الجودة المعتمدة وتقليل الهدر.</li>
+                            <li>التدريب المستمر لأعضاء الفريق على تقنيات تحضير القهوة المتنوعة وفنون التذوق.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- سيلانترو -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">مراقب جودة وباريستا معتمد (Certified Barista - Quality Monitor)</div>
+                                <div class="job-company"><i class="fas fa-coffee"></i> سيلانترو كافيه (Cilantro Cafe) - القاهرة</div>
+                            </div>
+                            <span class="job-date">2016 - 2020</span>
+                        </div>
+                        <ul class="custom-list">
+                            <li>تقييم جودة القهوة والمشروبات الساخنة والباردة بناءً على معايير الفحص القياسية الدقيقة.</li>
+                            <li>تطوير طرق مبتكرة لتحضير المشروبات ساهمت في تحسين التجربة الكلية لرواد المقهى.</li>
+                            <li>تحضير مشروبات عالية الجودة مع المراقبة المستمرة لمستوى خدمة العملاء داخل الفرع.</li>
+                            <li>إدارة وتوجيه فريق العمل اليومي لرفع مستوى الخدمة وزيادة الكفاءة التشغيلية.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- المؤهلات الدراسية -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">بكالوريوس الدراسات الفندقية (Bachelor of Hotel Studies)</div>
+                                <div class="job-company"><i class="fas fa-university"></i> معهد الفراعنة للدراسات الفندقية - الجيزة</div>
+                            </div>
+                            <span class="job-date">سبتمبر 2014 - 2018</span>
+                        </div>
+                        <ul class="custom-list">
+                            <li>إتقان أساسيات إدارة المقاهي والضيافة، وفنون تذوق القهوة وتقييم جودتها ومكوناتها.</li>
+                            <li>دراسة مبادئ سلامة الغذاء، إدارة الجودة، ومراقبة المعايير لضمان تقديم خدمات رفيعة المستوى.</li>
+                            <li>تطبيق استراتيجيات تسويق المشروبات لزيادة المبيعات، وتطوير وتنظيم قوائم المشروبات بطرق جذابة.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. المهارات المهنية (Animated Progress Bars) -->
+        <section>
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-Sliders-h"></i></div>
+                <h2 class="section-title">المهارات والكفاءات الاحترافية</h2>
+            </div>
+
+            <div class="grid-2">
+                <div class="glass-card">
+                    <div class="skill-group-title">
+                        <i class="fas fa-flask"></i> الفنون التشغيلية ومراقبة الجودة
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>تحضير المشروبات المتقدمة والقهوة المختصة</span><span class="skill-percent">95%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="95%"></div></div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>تقييم ومراقبة الجودة القياسية (Quality Assessment)</span><span class="skill-percent">92%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="92%"></div></div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>سلامة الغذاء وإدارة مسببات الحساسية (Allergens)</span><span class="skill-percent">90%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="90%"></div></div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>ابتكار وتطوير قوائم المشروبات (Menu Development)</span><span class="skill-percent">88%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="88%"></div></div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="skill-group-title">
+                        <i class="fas fa-users-cog"></i> القيادة وتجربة العملاء
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>إدارة وتدريب فرق العمل (Team Management)</span><span class="skill-percent">92%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="92%"></div></div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>الارتقاء بتجربة ورضا العملاء (Customer Experience)</span><span class="skill-percent">95%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="95%"></div></div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>التفتيش الدوري ومطابقة المعايير القياسية</span><span class="skill-percent">90%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="90%"></div></div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-info"><span>استراتيجيات تسويق المشروبات وزيادة المبيعات</span><span class="skill-percent">85%</span></div>
+                        <div class="progress-track"><div class="progress-bar" data-width="85%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. الشهادات والاعتمادات الدولية ونماذج النجاح -->
+        <section>
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-award"></i></div>
+                <h2 class="section-title">الاعتمادات الدولية ونماذج النجاح</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="glass-card cert-card">
+                    <div class="cert-badge"><i class="fas fa-gem"></i></div>
+                    <div>
+                        <span class="cert-year">2024</span>
+                        <h3 class="cert-name">Certified Reserve Barista</h3>
+                        <p class="cert-desc">إتمام التدريبات المتقدمة بنجاح للانضمام إلى نخبة صُناع القهوة المختصة في ستاربكس.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card cert-card">
+                    <div class="cert-badge"><i class="fas fa-trophy"></i></div>
+                    <div>
+                        <span class="cert-year">2023</span>
+                        <h3 class="cert-name">لقب بطل الباريستا (Barista Champion)</h3>
+                        <p class="cert-desc">التتويج بلقب بطولة الباريستا من ستاربكس تقديراً للريادة والحرفية العالية وجودة التذوق.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card cert-card">
+                    <div class="cert-badge"><i class="fas fa-shield-virus"></i></div>
+                    <div>
+                        <span class="cert-year">2022</span>
+                        <h3 class="cert-name">Allergen Implementation Training</h3>
+                        <p class="cert-desc">شهادة معتمدة من ستاربكس في تطبيق معايير الوقاية من مسببات الحساسية وسلامة المشروبات.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card cert-card">
+                    <div class="cert-badge"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <span class="cert-year">2021</span>
+                        <h3 class="cert-name">MENA Coffee Academy</h3>
+                        <p class="cert-desc">شهادة إتمام البرنامج الأكاديمي المتقدم من أكاديمية القهوة للشرق الأوسط وشمال أفريقيا وستاربكس.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card cert-card">
+                    <div class="cert-badge"><i class="fas fa-medal"></i></div>
+                    <div>
+                        <span class="cert-year">2021</span>
+                        <h3 class="cert-name">شهادات تقدير وتميز (Appreciation)</h3>
+                        <p class="cert-desc">حصد عدة شهادات تقدير من ستاربكس نظير المبادرات الفعالة والالتزام والولاء المثالي مع الزملاء والعملاء.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card cert-card">
+                    <div class="cert-badge"><i class="fas fa-certificate"></i></div>
+                    <div>
+                        <span class="cert-year">2020</span>
+                        <h3 class="cert-name">Certified Barista</h3>
+                        <p class="cert-desc">الحصول على شهادة الباريستا المعتمد الرسمية من ستاربكس كافيه.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 5. الشريط العائم للتواصل السريع -->
+    <nav class="floating-dock">
+        <a href="tel:0112182143" class="dock-btn dock-call">
+            <i class="fas fa-phone-alt"></i>
+            <span>اتصال مباشر</span>
+        </a>
+        <a href="https://wa.me/20112182143" target="_blank" class="dock-btn dock-wa">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب</span>
+        </a>
+        <a href="mailto:Mohammedismaeel@hotmail.com" class="dock-btn dock-in">
+            <i class="fab fa-linkedin-in"></i>
+            <span>تواصل مهني</span>
+        </a>
+    </nav>
+
+    <!-- تحريك أشرطة المهارات تلقائياً -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.progress-bar').forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
